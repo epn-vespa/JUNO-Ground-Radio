@@ -1,0 +1,499 @@
+! Skeleton table for the "1395249321251" CDF.
+! Generated: Wednesday, 19-Mar-2014 18:15:38
+! CDF created/modified by CDF V3.5.0
+! Skeleton table created by CDF V3.5.0_1
+
+#header
+
+                       CDF NAME: 1395249321251
+                  DATA ENCODING: PPC
+                       MAJORITY: COLUMN
+                         FORMAT: SINGLE
+
+! Variables  G.Attributes  V.Attributes  Records  Dims  Sizes
+! ---------  ------------  ------------  -------  ----  -----
+    0/7          64            37         0/z      1    400
+! CDF_COMPRESSION: None
+! (Valid compression: None, GZIP.1-9, RLE.0, HUFF.0, AHUFF.0)
+! CDF_CHECKSUM: MD5
+! (Valid checksum: None, MD5)
+
+
+#GLOBALattributes
+
+! Attribute         Entry       Data
+! Name              Number      Type       Value
+! ---------         ------      ----       -----
+
+! ISTP Specific Global Attributes
+! -------------------------------
+
+  "Project"             1:    CDF_CHAR     { "ObsNancay>Observatory of Nancay" }
+                        2:    CDF_CHAR     { "VOPDC>VO Paris Data Center" } .
+
+  "Discipline"          1:    CDF_CHAR     { "Planetary Physics" -
+                                             ">Waves" } .
+
+  "Data_type"           1:    CDF_CHAR     { "DDR_calib>Derived Data Record, Calibrated" } .
+
+  "Descriptor"          1:    CDF_CHAR     { "routine_jup" } .
+
+  "Data_version"        1:    CDF_CHAR     { "01" } .
+
+  "Instrument_type"     1:    CDF_CHAR     { "Radio Telescope" } .
+
+  "Logical_file_id"     1:    CDF_CHAR     { "nda_routine_jup_ddr_calib_000000000000_000000000000_V05.cdf" } .
+
+  "Logical_source"      1:    CDF_CHAR     { "nda" } .
+
+  "Logical_source_description"
+                        1:    CDF_CHAR     { "Jupiter Routine Observations " - 
+                                             "from the Nancay Decameter Array" } .
+  "File_naming_convention"
+                        1:    CDF_CHAR     { "source_descriptor" -
+                                             "_yyyymmddhhmm_yyyymmddhhmm_ver" } .
+
+  "Mission_group"       1:    CDF_CHAR     { "Nancay Decametric Array" } .
+
+  "PI_name"             1:    CDF_CHAR     { "A. Lecacheux" } .
+
+  "PI_affiliation"      1:    CDF_CHAR     { "Observatoire de Paris" } .
+
+  "Source_name"         1:    CDF_CHAR     { "NDA>Nancay Decametric Array" } .
+
+  "TEXT"                1:    CDF_CHAR     { " " } .
+
+  "Generated_by"        1:    CDF_CHAR     { "LESIA" } 
+                        2:    CDF_CHAR     { "ObsNancay" } .
+
+  "Generation_date" .
+
+  "LINK_TEXT"           1:    CDF_CHAR     { "Nancay DAM webpage" } .
+
+  "LINK_TITLE"          1:    CDF_CHAR     { "Nancay DAM archive" } .
+
+  "HTTP_LINK"           1:    CDF_CHAR     { "http://www.obs-nancay.fr/" } .
+
+  "MODS" .
+
+  "Parents" .
+  
+  "Rules_of_use" .
+
+  "Skeleton_version"    1:    CDF_CHAR     { "0.5" } .
+
+  "Software_version"    1:    CDF_CHAR     { "0.5" } .
+
+  "Time_resolution" .
+
+  "Acknowledgement" .
+
+  "ADID_ref" .
+  
+  "Validate" .
+
+! PDS Specific Global Attributes
+! ------------------------------
+  "PDS_Observation_start_time"
+                       1:    CDF_CHAR     { "0000-01-01T00:00:00.000Z" } .
+
+  "PDS_Observation_stop_time"
+                       1:    CDF_CHAR     { "0000-01-01T00:00:00.000Z" } .
+
+  "PDS_Observation_target"
+                       1:    CDF_CHAR     { "Jupiter" } .
+
+  "PDS_Observation_type"
+                       1:    CDF_CHAR     { "Radio" } .
+
+! CDPP Specific Global Attributes
+! -------------------------------
+
+
+! VESPA Specific Global Attributes
+! --------------------------------
+
+  "VESPA_dataproduct_type"
+                       1:    CDF_CHAR     { "DS>Dynamic Spectra" } . 
+
+  "VESPA_target_class"
+                       1:    CDF_CHAR     { "planet" } . 
+
+  "VESPA_target_region"
+                       1:    CDF_CHAR     { "aurora" } 
+                       2:    CDF_CHAR     { "magnetosphere" } .
+
+  "VESPA_target_element"
+                       1:    CDF_CHAR     { "DAM radio emissions" } . 
+
+  "VESPA_time_min"
+                       1:    CDF_REAL8    { 0.0 } . 
+
+  "VESPA_time_max"
+                       1:    CDF_REAL8    { 0.0 } . 
+
+  "VESPA_time_sampling_step_min"
+                       1:    CDF_REAL4    { 0.0 } . 
+
+  "VESPA_time_sampling_step_max"
+                       1:    CDF_REAL4    { 0.0 } . 
+
+  "VESPA_spectral_range_min"
+                       1:    CDF_REAL8    { 0.0 } . 
+
+  "VESPA_spectral_range_max"
+                       1:    CDF_REAL8    { 0.0 } . 
+
+  "VESPA_spectral_sampling_step_min"
+                       1:    CDF_REAL4    { 0.0 } . 
+
+  "VESPA_spectral_sampling_step_max"
+                       1:    CDF_REAL4    { 0.0 } . 
+
+  "VESPA_instrument_host_name"
+                       1:    CDF_CHAR     { "NDA>Nancay Decameter Array" } . 
+                       
+  "VESPA_instrument_name"
+                       1:    CDF_CHAR     { "Routine" } .
+                       
+  "VESPA_measurement_type"
+                       1:    CDF_CHAR     { "phys.flux.density;em.radio" } .  
+                    
+  "VESPA_access_format"
+                       1:    CDF_CHAR     { "cdf" } . 
+                                             
+
+#VARIABLEattributes
+
+  "CATDESC"
+  "DEPEND_0"
+  "DEPEND_1"
+  "DEPEND_2"
+  "DEPEND_3"
+  "DICT_KEY"
+  "DISPLAY_TYPE"
+  "FIELDNAM"
+  "FILLVAL"
+  "FORMAT"
+  "LABLAXIS"
+  "LABL_PTR_1"
+  "LABL_PTR_2"
+  "LABL_PTR_3"
+  "UNITS"
+  "UNIT_PTR"
+  "VALIDMIN"
+  "VALIDMAX"
+  "VAR_TYPE"
+  "SCALETYP"
+  "SCAL_PTR"
+  "VAR_NOTES"
+  "MONOTON"
+  "LEAP_SECONDS_INCLUDED"
+  "RESOLUTION"
+  "Bin_location"
+  "TIME_BASE"
+  "TIME_SCALE"
+  "REFERENCE_POSITION"
+  "ABSOLUTE_ERROR"
+  "RELATIVE_ERROR"
+  "FORM_PTR"
+  "DELTA_PLUS_VAR"
+  "DELTA_MINUS_VAR"
+  "SCALEMIN"
+  "SCALEMAX"
+  "UCD"
+
+
+#variables
+
+! No rVariables.
+
+
+#zVariables
+
+! Variable          Data      Number                 Record   Dimension
+! Name              Type     Elements  Dims  Sizes  Variance  Variances
+! --------          ----     --------  ----  -----  --------  ---------
+
+  "Epoch"         CDF_EPOCH    1       0              T
+
+  ! VAR_COMPRESSION: None
+  ! (Valid compression: None, GZIP.1-9, RLE.0, HUFF.0, AHUFF.0)
+  ! VAR_SPARSERECORDS: None
+  ! (Valid sparserecords: None, sRecords.PAD, sRecords.PREV)
+  ! VAR_PADVALUE:  01-Jan-0000 00:00:00.000
+
+  ! Attribute       Data
+  ! Name            Type       Value
+  ! --------        ----       -----
+
+    "CATDESC"     CDF_CHAR     { "Default time" }
+    "FIELDNAM"    CDF_CHAR     { "Epoch" }
+    "FILLVAL"     CDF_EPOCH    { 01-Jan-0000 00:00:00.000 }
+    "LABLAXIS"    CDF_CHAR     { "Epoch" }
+    "UNITS"       CDF_CHAR     { "ms" }
+    "VALIDMIN"    CDF_EPOCH    { 01-Jan-0000 00:00:00.000 }
+    "VALIDMAX"    CDF_EPOCH    { 01-Jan-0000 00:00:00.000 }
+    "VAR_TYPE"    CDF_CHAR     { "support_data" }
+    "SCALETYP"    CDF_CHAR     { "linear" }
+    "MONOTON"     CDF_CHAR     { "INCREASE" }
+    "TIME_BASE"   CDF_CHAR     { "J2000" }
+    "TIME_SCALE"  CDF_CHAR     { "UTC" }
+    "REFERENCE_POSITION"
+                  CDF_CHAR     { "Earth" }
+    "SCALEMIN"    CDF_EPOCH    { 01-Jan-0000 00:00:00.000 }
+    "SCALEMAX"    CDF_EPOCH    { 01-Jan-0000 00:00:00.000 }
+    "UCD"         CDF_CHAR     { "time.epoch" } .
+
+  ! RV values were not requested.
+
+
+! Variable          Data      Number                 Record   Dimension
+! Name              Type     Elements  Dims  Sizes  Variance  Variances
+! --------          ----     --------  ----  -----  --------  ---------
+
+  "ISO_DATE"           CDF_CHAR      24       0              T
+
+  ! VAR_COMPRESSION: None
+  ! (Valid compression: None, GZIP.1-9, RLE.0, HUFF.0, AHUFF.0)
+  ! VAR_SPARSERECORDS: None
+  ! (Valid sparserecords: None, sRecords.PAD, sRecords.PREV)
+  ! VAR_PADVALUE:  " "
+
+  ! Attribute       Data
+  ! Name            Type       Value
+  ! --------        ----       -----
+
+    "CATDESC"     CDF_CHAR     { "ISO_DATE" }
+    "DEPEND_0"    CDF_CHAR     { "Epoch" }
+    "DICT_KEY"    CDF_CHAR     { "time" }
+    "DISPLAY_TYPE"  CDF_CHAR     { "time_series" }
+    "FIELDNAM"    CDF_CHAR     { "ISO_DATE" }
+    "FILLVAL"     CDF_CHAR     { "0000-01-00T00:00:00.000Z" }
+    "FORMAT"      CDF_CHAR     { "A25" }
+    "LABLAXIS"    CDF_CHAR     { "Date (ISO Format)" }
+    "VAR_TYPE"    CDF_CHAR     { "support_data" } 
+    "VALIDMIN"    CDF_CHAR     { "1990-01-01T00:00:00.000Z" }
+    "VALIDMAX"    CDF_CHAR     { "2029-12-31T23:59:59.999Z" }
+    "SCALETYP"    CDF_CHAR     { "linear" }
+    "SCALEMIN"    CDF_CHAR     { "1990-01-01T00:00:00.000Z" }
+    "SCALEMAX"    CDF_CHAR     { "2029-12-31T23:59:59.999Z" }
+    "UCD"         CDF_CHAR     { "time.epoch" } .
+
+  ! RV values were not requested.
+  
+
+! Variable          Data      Number                 Record   Dimension
+! Name              Type     Elements  Dims  Sizes  Variance  Variances
+! --------          ----     --------  ----  -----  --------  ---------
+
+  "JD_TIME"       CDF_REAL8      1       0              T
+
+  ! VAR_COMPRESSION: None
+  ! (Valid compression: None, GZIP.1-9, RLE.0, HUFF.0, AHUFF.0)
+  ! VAR_SPARSERECORDS: None
+  ! (Valid sparserecords: None, sRecords.PAD, sRecords.PREV)
+  ! VAR_PADVALUE: -1.0e+30
+
+  ! Attribute       Data
+  ! Name            Type       Value
+  ! --------        ----       -----
+
+    "CATDESC"     CDF_CHAR     { "Julian Day" }
+    "DEPEND_0"    CDF_CHAR     { "Epoch" }
+    "DICT_KEY"    CDF_CHAR     { "time" }
+    "DISPLAY_TYPE"
+                  CDF_CHAR     { "time_series" }
+    "FIELDNAM"    CDF_CHAR     { "JulDay" }
+    "FILLVAL"     CDF_REAL8    { -1.0e+31 }
+    "FORMAT"      CDF_CHAR     { "E12.2" }
+    "LABLAXIS"    CDF_CHAR     { "Jday" }
+    "UNITS"       CDF_CHAR     { "s" }
+    "VALIDMIN"    CDF_REAL8    { 0.0 }
+    "VALIDMAX"    CDF_REAL8    { 1.0e+16 }
+    "VAR_TYPE"    CDF_CHAR     { "support_data" }
+    "SCALETYP"    CDF_CHAR     { "linear" }
+    "SCALEMIN"    CDF_REAL8    { 2.45729e+06 }
+    "SCALEMAX"    CDF_REAL8    { 2.45729e+06 }
+    "UCD"         CDF_CHAR     { "time.epoch" } .
+
+  ! RV values were not requested.
+
+
+! Variable          Data      Number                 Record   Dimension
+! Name              Type     Elements  Dims  Sizes  Variance  Variances
+! --------          ----     --------  ----  -----  --------  ---------
+
+  "RH_FLUX"       CDF_REAL4      1       1     400         T     T 
+
+  ! VAR_COMPRESSION: None
+  ! (Valid compression: None, GZIP.1-9, RLE.0, HUFF.0, AHUFF.0)
+  ! VAR_SPARSERECORDS: None
+  ! (Valid sparserecords: None, sRecords.PAD, sRecords.PREV)
+  ! VAR_PADVALUE: -1.0e+30
+
+  ! Attribute       Data
+  ! Name            Type       Value
+  ! --------        ----       -----
+
+    "CATDESC"     CDF_CHAR     { "RH polar flux density" }
+    "DEPEND_0"    CDF_CHAR     { "Epoch" }
+    "DEPEND_1"    CDF_CHAR     { "Frequency" }
+    "LABL_PTR_1"  CDF_CHAR     { "Frequency" }
+    "DICT_KEY"    CDF_CHAR     { "RH_FLUX" }
+    "DISPLAY_TYPE"
+                  CDF_CHAR     { "time_series" }
+    "FIELDNAM"    CDF_CHAR     { "RH_FLUX" }
+    "FILLVAL"     CDF_REAL4    { -1.0e+31 }
+    "FORMAT"      CDF_CHAR     { "E12.2" }
+    "LABLAXIS"    CDF_CHAR     { "RH polar flux density" }
+    "UNITS"       CDF_CHAR     { "W/m^2/Hz" }
+    "VALIDMIN"    CDF_REAL4    { 0.0 }
+    "VALIDMAX"    CDF_REAL4    { 1.0e+06 }
+    "VAR_TYPE"    CDF_CHAR     { "data" }
+    "SCALETYP"    CDF_CHAR     { "log" }
+    "SCALEMIN"    CDF_REAL4    { 0.0 }
+    "SCALEMAX"    CDF_REAL4    { 20.0 }
+    "UCD"         CDF_CHAR     { "phys.flux.density;em.radio" } .
+
+  ! RV values were not requested.
+
+
+! Variable          Data      Number                 Record   Dimension
+! Name              Type     Elements  Dims  Sizes  Variance  Variances
+! --------          ----     --------  ----  -----  --------  ---------
+
+  "LH_FLUX"       CDF_REAL4      1       1     400         T     T 
+
+  ! VAR_COMPRESSION: None
+  ! (Valid compression: None, GZIP.1-9, RLE.0, HUFF.0, AHUFF.0)
+  ! VAR_SPARSERECORDS: None
+  ! (Valid sparserecords: None, sRecords.PAD, sRecords.PREV)
+  ! VAR_PADVALUE: -1.0e+30
+
+  ! Attribute       Data
+  ! Name            Type       Value
+  ! --------        ----       -----
+
+    "CATDESC"     CDF_CHAR     { "LH polar flux density" }
+    "DEPEND_0"    CDF_CHAR     { "Epoch" }
+    "DEPEND_1"    CDF_CHAR     { "Frequency" }
+    "LABL_PTR_1"  CDF_CHAR     { "Frequency" }
+    "DICT_KEY"    CDF_CHAR     { "LH_FLUX" }
+    "DISPLAY_TYPE"
+                  CDF_CHAR     { "time_series" }
+    "FIELDNAM"    CDF_CHAR     { "LH_FLUX" }
+    "FILLVAL"     CDF_REAL4    { -1.0e+31 }
+    "FORMAT"      CDF_CHAR     { "E12.2" }
+    "LABLAXIS"    CDF_CHAR     { "LH polar flux density" }
+    "UNITS"       CDF_CHAR     { "W/m^2/Hz" }
+    "VALIDMIN"    CDF_REAL4    { 0.0 }
+    "VALIDMAX"    CDF_REAL4    { 1.0e+06 }
+    "VAR_TYPE"    CDF_CHAR     { "data" }
+    "SCALETYP"    CDF_CHAR     { "log" }
+    "SCALEMIN"    CDF_REAL4    { 0.0 }
+    "SCALEMAX"    CDF_REAL4    { 20.0 }
+    "UCD"         CDF_CHAR     { "phys.flux.density;em.radio" } .
+
+  ! RV values were not requested.
+
+
+! Variable          Data      Number                 Record   Dimension
+! Name              Type     Elements  Dims  Sizes  Variance  Variances
+! --------          ----     --------  ----  -----  --------  ---------
+
+  "RH_STATUS"       CDF_BYTE   1       0               T     
+
+  ! VAR_COMPRESSION: None
+  ! (Valid compression: None, GZIP.1-9, RLE.0, HUFF.0, AHUFF.0)
+  ! VAR_SPARSERECORDS: None
+  ! (Valid sparserecords: None, sRecords.PAD, sRecords.PREV)
+  ! VAR_PADVALUE: -1.0e+30
+
+  ! Attribute       Data
+  ! Name            Type       Value
+  ! --------        ----       -----
+
+    "CATDESC"     CDF_CHAR     { "RH sweep Status code" }
+    "DEPEND_0"    CDF_CHAR     { "Epoch" }
+    "DICT_KEY"    CDF_CHAR     { "RH_STATUS" }
+    "DISPLAY_TYPE"
+                  CDF_CHAR     { "time_series" }
+    "FIELDNAM"    CDF_CHAR     { "RH_STATUS" }
+    "FILLVAL"     CDF_BYTE    { -128 }
+    "FORMAT"      CDF_CHAR     { "I4" }
+    "LABLAXIS"    CDF_CHAR     { "Status Code" }
+    "UNITS"       CDF_CHAR     { "-" }
+    "VALIDMIN"    CDF_BYTE    { 0 }
+    "VALIDMAX"    CDF_BYTE    { 99 }
+    "VAR_TYPE"    CDF_CHAR     { "support_data" }
+    "SCALETYP"    CDF_CHAR     { "linear" }
+    "SCALEMIN"    CDF_BYTE    { 0 }
+    "SCALEMAX"    CDF_BYTE    { 99 }
+    "UCD"         CDF_CHAR     { "meta.code" } .
+
+  ! RV values were not requested.
+
+! Variable          Data      Number                 Record   Dimension
+! Name              Type     Elements  Dims  Sizes  Variance  Variances
+! --------          ----     --------  ----  -----  --------  ---------
+
+  "LH_STATUS"       CDF_BYTE   1       0               T     
+
+  ! VAR_COMPRESSION: None
+  ! (Valid compression: None, GZIP.1-9, RLE.0, HUFF.0, AHUFF.0)
+  ! VAR_SPARSERECORDS: None
+  ! (Valid sparserecords: None, sRecords.PAD, sRecords.PREV)
+  ! VAR_PADVALUE: -1.0e+30
+
+  ! Attribute       Data
+  ! Name            Type       Value
+  ! --------        ----       -----
+
+    "CATDESC"     CDF_CHAR     { "LH sweep Status code" }
+    "DEPEND_0"    CDF_CHAR     { "Epoch" }
+    "DICT_KEY"    CDF_CHAR     { "LH_STATUS" }
+    "DISPLAY_TYPE"
+                  CDF_CHAR     { "time_series" }
+    "FIELDNAM"    CDF_CHAR     { "LH_STATUS" }
+    "FILLVAL"     CDF_BYTE    { -128 }
+    "FORMAT"      CDF_CHAR     { "I4" }
+    "LABLAXIS"    CDF_CHAR     { "Status Code" }
+    "UNITS"       CDF_CHAR     { "-" }
+    "VALIDMIN"    CDF_BYTE    { 0 }
+    "VALIDMAX"    CDF_BYTE    { 99 }
+    "VAR_TYPE"    CDF_CHAR     { "support_data" }
+    "SCALETYP"    CDF_CHAR     { "linear" }
+    "SCALEMIN"    CDF_BYTE    { 0 }
+    "SCALEMAX"    CDF_BYTE    { 99 }
+    "UCD"         CDF_CHAR     { "meta.code" } .
+
+  ! RV values were not requested.
+
+
+! Variable          Data      Number                 Record   Dimension
+! Name              Type     Elements  Dims  Sizes  Variance  Variances
+! --------          ----     --------  ----  -----  --------  ---------
+
+  "Frequency"     CDF_REAL4      1       1     400        F         T
+
+  ! VAR_COMPRESSION: None
+  ! (Valid compression: None, GZIP.1-9, RLE.0, HUFF.0, AHUFF.0)
+  ! VAR_SPARSERECORDS: None
+  ! (Valid sparserecords: None, sRecords.PAD, sRecords.PREV)
+  ! VAR_PADVALUE: -1.0e+30
+
+  ! Attribute       Data
+  ! Name            Type       Value
+  ! --------        ----       -----
+
+    "CATDESC"     CDF_CHAR     { "Frequency" }
+    "FIELDNAM"    CDF_CHAR     { "Frequency" }
+    "UNITS"       CDF_CHAR     { "Hz" }
+    "FORMAT"      CDF_CHAR     { "E12.4" }
+    "LABLAXIS"    CDF_CHAR     { "Frequency" }
+    "VAR_TYPE"    CDF_CHAR     { "metadata" } .
+
+  ! RV values were not requested.
+
+#end
