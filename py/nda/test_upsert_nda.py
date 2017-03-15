@@ -16,4 +16,4 @@ if ncdf != npdf:
     print 'error !'
 else:
     for i in range(ncdf):
-        os.system('python upsert_nda.py {} {}'.format(cdf_list[i], pdf_list[i]))
+        os.system('python upsert_nda.py --verb {} {}'.format(cdf_list[i], pdf_list[i]))
