@@ -625,7 +625,7 @@ def build_edr_cdf(input_file, config_file='config.json', build_cdf_master=False)
     cdfout.attrs['VESPA_spectral_range_min'] = edr['header']['freq_min']*1.e6   # In Hz
     cdfout.attrs['VESPA_spectral_range_max'] = edr['header']['freq_max']*1.e6   # In Hz
     cdfout.attrs['VESPA_spectral_sampling_step'] = 75.e3                        # In Hz
-    cdfout.attrs['VESPA_spectral_resolution'] = 30.e3                           # In Hz
+    cdfout.attrs['VESPA_spectral_resolution'] = header['freq_res']*1e3          # In Hz
 
     # SETTING SRN-NDA GLOBAL ATTRIBUTES
 

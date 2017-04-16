@@ -1,0 +1,17 @@
+{
+  "version":{
+    "cdf": 00,
+    "sft": 00,
+    "dat": 00
+  },
+  "path":{
+    "master_path": "../master/",
+    "cdfbin_path": "/Applications/cdf/cdf36_0-dist/bin/",
+    "cdfout_path": "/Users/baptiste/Projets/EUROPLANET/H2020/VESPA-VAA/Nancay/NDA/NewRoutine_jupiter/data/cdf/v13/"
+  },
+  "db":{
+    "database": "gavo",
+    "host": "vogate.obs-nancay.fr",
+    "user": "gavoadmin",
+    "passwd": "ReplaceMe"
+  }
