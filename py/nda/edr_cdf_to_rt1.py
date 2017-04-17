@@ -1,13 +1,15 @@
 from spacepy import pycdf
-import os, sys
+import os
+import sys
 import struct
 import datetime
 import numpy as np
 
+
 def edr_cdf_to_rt1(cdf_file, rt1_file=''):
+    print, "Input CDF file: {}".format(os.path.basename(cdf_file))
 
-    print,"Input CDF file: {}".format(os.path.basename(cdf_file))
-
+    # opening CDF
     cdf = pycdf.CDF(cdf_file)
 
     # header['freq_min'] = raw[1:3]    # MHz
@@ -36,14 +38,31 @@ def edr_cdf_to_rt1(cdf_file, rt1_file=''):
     # header['h_stp_hh'] = raw[59:61]  # Observation stop time (hours)
     # header['h_stp_mm'] = raw[62:64]  # Observation stop time (minutes)
 
+    # building datetime object for meridian transit
     meridian_dt = datetime.datetime.strptime(cdf.attrs['NDA_meridian_time'][0], "%Y-%m-%dT%H:%M:%SZ")
+    # fixing 2 digits year number
+    meridian_yy = meridian_dt.year - 2000
+    if meridian_yy < 0:
+        meridian_yy += 100
 
-    n_rf_filter = len(cdf.attrs['NDA_rf_filter_selected'])
+    # building datetime object for observation start
+    start_dt = datetime.datetime.strptime(cdf.attrs['PDS_Observation_start_time'][0][0:19], "%Y-%m-%dT%H:%M:%S")
+    # fixing 2 digits year number
+    start_yy = start_dt.year - 2000
+    if start_yy < 0:
+        start_yy += 100
 
-    rf0_sele = cdf.attrs['NDA_rf_filter_selected'][0]
-    rf0_hour = datetime.datetime.strptime(cdf.attrs['NDA_rf_filter_time_change'][0], "%Y-%m-%dT%H:%M:%SZ").hour
-    rf0_minu = datetime.datetime.strptime(cdf.attrs['NDA_rf_filter_time_change'][0], "%Y-%m-%dT%H:%M:%SZ").minute
+    # building datetime object for observation stop
+    stop_dt = datetime.datetime.strptime(cdf.attrs['PDS_Observation_stop_time'][0][0:19], "%Y-%m-%dT%H:%M:%S")
 
+    # setting up RF filter header
+    n_rf_filter = len(cdf.attrs['NDA_rf_filter_selected'])  # Number of RF filter change in CDF header
+
+    rf0_sele = cdf.attrs['NDA_rf_filter_selected'][0]  # Code of RF filter selected at Observation start
+    rf0_hour = cdf.attrs['NDA_rf_filter_time_change'][0].hour  # Start hour of RF filter 0 (start of observation)
+    rf0_minu = cdf.attrs['NDA_rf_filter_time_change'][0].minute  # Start minute of RF filter 0 (start of observation)
+
+    # 1st RF filter change (if exists)
     if n_rf_filter > 1:
         rf1_sele = cdf.attrs['NDA_rf_filter_selected'][1]
         rf1_hour = datetime.datetime.strptime(cdf.attrs['NDA_rf_filter_time_change'][1], "%Y-%m-%dT%H:%M:%SZ").hour
@@ -53,6 +72,7 @@ def edr_cdf_to_rt1(cdf_file, rt1_file=''):
         rf1_hour = 0
         rf1_minu = 0
 
+    # 2nd RF filter change (if exists)
     if n_rf_filter == 3:
         rf2_sele = cdf.attrs['NDA_rf_filter_selected'][2]
         rf2_hour = datetime.datetime.strptime(cdf.attrs['NDA_rf_filter_time_change'][2], "%Y-%m-%dT%H:%M:%SZ").hour
@@ -62,27 +82,66 @@ def edr_cdf_to_rt1(cdf_file, rt1_file=''):
         rf2_hour = 0
         rf2_minu = 0
 
-    header = 'x{:02d}{:02d}{:03d}{:03d}{:05d}{:02d}{:02d}{:02d}{:1d}{:02d}:{:02d}{:1d}{:02d}:{:02d}{:1d}{:02d}:{:02d} {:02d}/{:02d}/{:02d}'.format(
-        int(np.round(cdf.attrs['VESPA_spectral_range_min'][0] / 1e6)),
-        int(np.round(cdf.attrs['VESPA_spectral_range_max'][0] / 1e6)),
-        int(np.round(cdf.attrs['VESPA_spectral_resolution'][0] / 1e3)),
-        int(np.round(cdf.attrs['NDA_reference_level'][0])),
-        int(np.round(cdf.attrs['NDA_sweep_duration'][0] * 1e3)),
-        int(np.round(cdf.attrs['NDA_power_resolution'][0])),
-        meridian_dt.hour, meridian_dt.minute,
-        rf0_sele, rf0_hour, rf0_minu,
-        rf1_sele, rf1_hour, rf1_minu,
-        rf2_sele, rf2_hour, rf2_minu,
-        meridian_dt.day, meridian_dt.month, meridian_dt.year
+    # building header (version 6, see srn_nda_routine_jup.py)
+    header = 'x{:02d}{:02d}{:03d}{:03d}{:05d}{:02d}{:02d}{:02d}{:1d}{:02d}:{:02d}{:1d}{:02d}:{:02d}{:1d}{:02d}:{:02d}' \
+             ' {:02d}/{:02d}/{:02d} {:02d}/{:02d}/{:02d} {:02d}:{:02d}'.format(
+        int(np.round(cdf.attrs['VESPA_spectral_range_min'][0] / 1e6)),  # Freq min (MHz)
+        int(np.round(cdf.attrs['VESPA_spectral_range_max'][0] / 1e6)),  # Freq max (MHz)
+        int(np.round(cdf.attrs['VESPA_spectral_resolution'][0] / 1e3)),  # Spectral Res (kHz)
+        int(np.round(cdf.attrs['NDA_reference_level'][0])),  # Ref level (dB)
+        int(np.round(cdf.attrs['NDA_sweep_duration'][0] * 1e3)),  # Sweep duration (ms)
+        int(np.round(cdf.attrs['NDA_power_resolution'][0])),  # Power resolution (dB/div)
+        meridian_dt.hour, meridian_dt.minute,  # Meridian Transit time: Hour, Minute
+        rf0_sele, rf0_hour, rf0_minu,  # 1st RF filter selected and time change (hout, minute)
+        rf1_sele, rf1_hour, rf1_minu,  # 2nd RF filter selected and time change (hout, minute)
+        rf2_sele, rf2_hour, rf2_minu,  # 3rd RF filter selected and time change (hout, minute)
+        meridian_dt.day, meridian_dt.month, meridian_yy,  # Meridian Transit time date: Day, Month, Year
+        start_dt.day, start_dt.month, start_yy,  # Observation Start date: Day, Month, Year
+        stop_dt.hour, stop_dt.minute  # Observation stop time: Hour, Minute
     )
 
+    # If no RT1 file name provide, building RT1 file name
     if rt1_file == '':
-        rt1_file = ''
+        rt1_file = 'J{:02d}{:02d}{:02d}.RT1'.format(meridian_yy, meridian_dt.month, meridian_dt.day)
 
-    rt1 = open(rt1_file,'wb')
-    rt1.write(struct.pack(header))
+    # open RT1 file in write binary mode
+    rt1 = open(rt1_file, 'wb')
+
+    # writing header, with trailing spaces
+    rt1.write(struct.pack('{:<405}'.format(header)))
+
+    data_dt = cdf['Epoch']
+    n_data = len(data_dt)
+
+    # looping on sweeps
+    for ii in range(n_data):
+        # LL sweep
+        rec_dt = data_dt[ii]
+        rectime = list()
+        rectime.append(rec_dt.hour)
+        rectime.append(rec_dt.minute)
+        rectime.append(rec_dt.second)
+        rectime.append(int(rec_dt.microsecond / 1e4))
+        rt1.write(bytearray(rectime))
+        rt1.write(bytearray(cdf['LL'][ii]))
+        rt1.write(bytearray(cdf['STATUS'][ii][0]))
+
+        # RR sweep
+        rec_dt = data_dt[ii] + datetime.timedelta(seconds=float(cdf['RR_SWEEP_TIME_OFFSET'][ii]))
+        rectime = list()
+        rectime.append(rec_dt.hour)
+        rectime.append(rec_dt.minute)
+        rectime.append(rec_dt.second)
+        rectime.append(int(rec_dt.microsecond / 1e4))
+        rt1.write(bytearray(rectime))
+        rt1.write(bytearray(cdf['RR'][ii]))
+        rt1.write(bytearray(cdf['STATUS'][ii][1]))
+
+    rt1.close()
+    cdf.close()
 
     return 0
+
 
 if __name__ == '__main__':
 
@@ -93,26 +152,27 @@ if __name__ == '__main__':
         file_cdf = arg[1]
 
         if not file_cdf.to_lower.endswith('.cdf'):
-
-           print,"Wrong input file. File extension not matching CDF file."
-           return -1
+            print, "Wrong input file. File extension not matching CDF file."
+            sys.exit(-1)
 
         if len(arg) == 3:
 
             file_rt1 = arg[2]
-            if not file_rt1.endswidth('.RT1'):
 
-               print,"Wrong output file. File extension must be '.RT1'."
-               return -1
+            if not file_rt1.endswidth('.RT1'):
+                print, "Wrong output file. File extension must be '.RT1'."
+                sys.exit(-1)
+
+            edr_cdf_to_rt1(file_cdf, file_rt1)
 
         else:
+
             edr_cdf_to_rt1(file_cdf)
 
-        edr_cdf_to_rt1(file_cdf, file_rt1)
+        sys.exit(0)
 
     else:
 
         print, "Wrong syntax."
         print, "Usage: edr_cdf_to_rt1 input.cdf [OUTPUT.RT1]"
-        return -1
-
+        sys.exit(-1)
