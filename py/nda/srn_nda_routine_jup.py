@@ -644,7 +644,7 @@ def build_edr_cdf(input_file, config_file='config.json', build_cdf_master=False)
     tmp_rf_filt = []
     tmp_rf_filt_change = []
     tmp_rf_filt.append(edr['header']['rf_filt0'])
-    tmp_rf_filt_change.append(edr['header']['start_datetime'].isoformat()+'Z')
+    tmp_rf_filt_change.append(edr['header']['rf_filt0_time'].isoformat()+'Z')
     if edr['header']['rf_filt1'] != 0:
         tmp_rf_filt.append(edr['header']['rf_filt1'])
         tmp_rf_filt_change.append(edr['header']['rf_filt1_time'].isoformat()+'Z')
