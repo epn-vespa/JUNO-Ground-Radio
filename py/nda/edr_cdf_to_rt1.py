@@ -108,7 +108,7 @@ def edr_cdf_to_rt1(cdf_file, rt1_file=''):
     rt1 = open(rt1_file, 'wb')
 
     # writing header, with trailing spaces
-    rt1.write(struct.pack('{:<405}'.format(header)))
+    rt1.write(header)
 
     data_dt = cdf['Epoch']
     n_data = len(data_dt)
