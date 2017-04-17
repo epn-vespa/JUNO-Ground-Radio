@@ -354,7 +354,7 @@ def load_rt1_data(file_rt1):
         else:
             raw_header['start_yr'] = '19'+raw_header['merid_yr']
 
-    # Adding meridian crossing date when not present
+    # Adding meridian transit date when not present
     else:
         raw_header['merid_yr'] = filedate[0:4]
         raw_header['merid_mo'] = filedate[4:6]
@@ -590,7 +590,7 @@ def build_edr_cdf(input_file, config_file='config.json', build_cdf_master=False)
     if build_cdf_master:
         if os.path.exists(master_cdf_path):
             os.remove(master_cdf_path)
-        os.system('{} -cdf {} {}'.format(os.path.join(cdfbin_path,'skeletoncdf'),
+        os.system('{} -cdf {} {}'.format(os.path.join(cdfbin_path, 'skeletoncdf'),
                                          master_cdf_path, skelet_cdf_path))
 
     print "Raw data file name:"
@@ -625,7 +625,7 @@ def build_edr_cdf(input_file, config_file='config.json', build_cdf_master=False)
     cdfout.attrs['VESPA_spectral_range_min'] = edr['header']['freq_min']*1.e6   # In Hz
     cdfout.attrs['VESPA_spectral_range_max'] = edr['header']['freq_max']*1.e6   # In Hz
     cdfout.attrs['VESPA_spectral_sampling_step'] = 75.e3                        # In Hz
-    cdfout.attrs['VESPA_spectral_resolution'] = header['freq_res']*1e3          # In Hz
+    cdfout.attrs['VESPA_spectral_resolution'] = edr['header']['freq_res']*1e3          # In Hz
 
     # SETTING SRN-NDA GLOBAL ATTRIBUTES
 
@@ -644,7 +644,7 @@ def build_edr_cdf(input_file, config_file='config.json', build_cdf_master=False)
     tmp_rf_filt = []
     tmp_rf_filt_change = []
     tmp_rf_filt.append(edr['header']['rf_filt0'])
-    tmp_rf_filt_change.append(edr['header']['start_time'].isoformat()+'Z')
+    tmp_rf_filt_change.append(edr['header']['start_datetime'].isoformat()+'Z')
     if edr['header']['rf_filt1'] != 0:
         tmp_rf_filt.append(edr['header']['rf_filt1'])
         tmp_rf_filt_change.append(edr['header']['rf_filt1_time'].isoformat()+'Z')
