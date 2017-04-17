@@ -7,7 +7,7 @@ import numpy as np
 
 
 def edr_cdf_to_rt1(cdf_file, rt1_file=''):
-    print, "Input CDF file: {}".format(os.path.basename(cdf_file))
+    print "Input CDF file: {}".format(os.path.basename(cdf_file))
 
     # opening CDF
     cdf = pycdf.CDF(cdf_file)
@@ -152,7 +152,7 @@ if __name__ == '__main__':
         file_cdf = arg[1]
 
         if not file_cdf.to_lower.endswith('.cdf'):
-            print, "Wrong input file. File extension not matching CDF file."
+            print "Wrong input file. File extension not matching CDF file."
             sys.exit(-1)
 
         if len(arg) == 3:
@@ -160,7 +160,7 @@ if __name__ == '__main__':
             file_rt1 = arg[2]
 
             if not file_rt1.endswidth('.RT1'):
-                print, "Wrong output file. File extension must be '.RT1'."
+                print "Wrong output file. File extension must be '.RT1'."
                 sys.exit(-1)
 
             edr_cdf_to_rt1(file_cdf, file_rt1)
@@ -173,6 +173,6 @@ if __name__ == '__main__':
 
     else:
 
-        print, "Wrong syntax."
-        print, "Usage: edr_cdf_to_rt1 input.cdf [OUTPUT.RT1]"
+        print "Wrong syntax."
+        print "Usage: edr_cdf_to_rt1 input.cdf [OUTPUT.RT1]"
         sys.exit(-1)
