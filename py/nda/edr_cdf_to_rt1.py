@@ -8,7 +8,7 @@ import pdb
 
 
 def edr_cdf_to_rt1(cdf_file, rt1_file='', verbose=False):
-    pdb.set_trace()
+    # pdb.set_trace()
     print "Input CDF file: {}".format(os.path.basename(cdf_file))
 
     # opening CDF
