@@ -4,9 +4,11 @@ import sys
 import struct
 import datetime
 import numpy as np
+import pdb
 
 
-def edr_cdf_to_rt1(cdf_file, rt1_file=''):
+def edr_cdf_to_rt1(cdf_file, rt1_file='', verbose=False):
+    pdb.set_trace()
     print "Input CDF file: {}".format(os.path.basename(cdf_file))
 
     # opening CDF
@@ -99,6 +101,9 @@ def edr_cdf_to_rt1(cdf_file, rt1_file=''):
         start_dt.day, start_dt.month, start_yy,  # Observation Start date: Day, Month, Year
         stop_dt.hour, stop_dt.minute  # Observation stop time: Hour, Minute
     )
+    if verbose:
+        print 'Header = {}'.format(header)
+        filesize_prev = 0
 
     # If no RT1 file name provide, building RT1 file name
     if rt1_file == '':
@@ -106,7 +111,7 @@ def edr_cdf_to_rt1(cdf_file, rt1_file=''):
 
     # open RT1 file in write binary mode
     rt1 = open(rt1_file, 'wb')
-
+    
     # writing header, with trailing spaces
     rt1.write(header)
 
@@ -124,7 +129,7 @@ def edr_cdf_to_rt1(cdf_file, rt1_file=''):
         rectime.append(int(rec_dt.microsecond / 1e4))
         rt1.write(bytearray(rectime))
         rt1.write(bytearray(cdf['LL'][ii]))
-        rt1.write(bytearray(cdf['STATUS'][ii][0]))
+        rt1.write(chr(cdf['STATUS'][ii][0]))
 
         # RR sweep
         rec_dt = data_dt[ii] + datetime.timedelta(seconds=float(cdf['RR_SWEEP_TIME_OFFSET'][ii]))
@@ -135,7 +140,7 @@ def edr_cdf_to_rt1(cdf_file, rt1_file=''):
         rectime.append(int(rec_dt.microsecond / 1e4))
         rt1.write(bytearray(rectime))
         rt1.write(bytearray(cdf['RR'][ii]))
-        rt1.write(bytearray(cdf['STATUS'][ii][1]))
+        rt1.write(chr(cdf['STATUS'][ii][1]))
 
     rt1.close()
     cdf.close()
