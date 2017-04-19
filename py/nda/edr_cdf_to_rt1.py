@@ -108,6 +108,7 @@ def edr_cdf_to_rt1(cdf_file, rt1_file='', verbose=False):
     # If no RT1 file name provide, building RT1 file name
     if rt1_file == '':
         rt1_file = 'J{:02d}{:02d}{:02d}.RT1'.format(meridian_yy, meridian_dt.month, meridian_dt.day)
+    print "Output RT1 file: {}".format(os.path.basename(rt1_file))
 
     # open RT1 file in write binary mode
     rt1 = open(rt1_file, 'wb')
