@@ -414,9 +414,9 @@ def load_rt1_data(file_rt1):
                           raw_header['end_ms']*1000) + \
         datetime.timedelta(milliseconds=header['swp_time'])
     header['start_time'] = header['start_datetime'].time()
-    header['stop__time'] = header['stop_datetime'].time()
+    header['stop_time'] = header['stop_datetime'].time()
     # Fixing start and stop dates when midnight occurs during observation
-    if header['start_time'] > header['stop__time']:
+    if header['start_time'] > header['stop_time']:
         # we don't check header_version = 1 as the corresponding data do not fall into this case (pfiou...)
         if header['meridian_datetime'].time() > header['start_time']:
             # if meridian time is between start time and midnight, then add 1 day to stop time
@@ -427,16 +427,16 @@ def load_rt1_data(file_rt1):
 
     # Checking header Observation Stop Time, when it exist (header version 6)
     if header_version == 6:
-        if int(raw_header['h_stp_hh']) != header['stop__time'].hour:
+        if int(raw_header['h_stp_hh']) != header['stop_time'].hour:
             print 'Warning. Header Stop time (HH) inconsistent with data records!'
             print '         Keeping data record value. Header = {:02d}:{:02d} / Data = {:02d}:{:02d}'\
                 .format(int(raw_header['h_stp_hh']), int(raw_header['h_stp_mm']),
-                        header['stop__time'].hour, header['stop__time'].minute)
-        if int(raw_header['h_stp_mm']) != header['stop__time'].minute:
+                        header['stop_time'].hour, header['stop_time'].minute)
+        if int(raw_header['h_stp_mm']) != header['stop_time'].minute:
             print 'Warning. Header Stop time (MM) inconsistent with data records!'
             print '         Keeping data record value. Header = {:02d}:{:02d} / Data = {:02d}:{:02d}'\
                 .format(int(raw_header['h_stp_hh']), int(raw_header['h_stp_mm']),
-                        header['stop__time'].hour, header['stop__time'].minute)
+                        header['stop_time'].hour, header['stop_time'].minute)
 
     # RF Filter configuration
     if header_version < 5:
