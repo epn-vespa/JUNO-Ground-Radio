@@ -8,7 +8,11 @@ import pdb
 
 
 def edr_cdf_to_rt1(cdf_file, rt1_file='', verbose=False):
+<<<<<<< HEAD
     # pdb.set_trace()
+=======
+    #pdb.set_trace()
+>>>>>>> ccefbaee467156b27c9f7b3cdb7c677b5c8fcc3b
     print "Input CDF file: {}".format(os.path.basename(cdf_file))
 
     # opening CDF
@@ -61,14 +65,16 @@ def edr_cdf_to_rt1(cdf_file, rt1_file='', verbose=False):
     n_rf_filter = len(cdf.attrs['NDA_rf_filter_selected'])  # Number of RF filter change in CDF header
 
     rf0_sele = cdf.attrs['NDA_rf_filter_selected'][0]  # Code of RF filter selected at Observation start
-    rf0_hour = cdf.attrs['NDA_rf_filter_time_change'][0].hour  # Start hour of RF filter 0 (start of observation)
-    rf0_minu = cdf.attrs['NDA_rf_filter_time_change'][0].minute  # Start minute of RF filter 0 (start of observation)
+    rf0_dt = datetime.datetime.strptime(cdf.attrs['NDA_rf_filter_time_change'][0][0:19], "%Y-%m-%dT%H:%M:%S")
+    rf0_hour = rf0_dt.hour  # Start hour of RF filter 0 (start of observation)
+    rf0_minu = rf0_dt.minute  # Start minute of RF filter 0 (start of observation)
 
     # 1st RF filter change (if exists)
     if n_rf_filter > 1:
         rf1_sele = cdf.attrs['NDA_rf_filter_selected'][1]
-        rf1_hour = datetime.datetime.strptime(cdf.attrs['NDA_rf_filter_time_change'][1], "%Y-%m-%dT%H:%M:%SZ").hour
-        rf1_minu = datetime.datetime.strptime(cdf.attrs['NDA_rf_filter_time_change'][1], "%Y-%m-%dT%H:%M:%SZ").minute
+        rf1_dt = datetime.datetime.strptime(cdf.attrs['NDA_rf_filter_time_change'][1][0:19], "%Y-%m-%dT%H:%M:%S")
+        rf1_hour = rf1_dt.hour
+        rf1_minu = rf1_dt.minute
     else:
         rf1_sele = 0
         rf1_hour = 0
@@ -77,8 +83,9 @@ def edr_cdf_to_rt1(cdf_file, rt1_file='', verbose=False):
     # 2nd RF filter change (if exists)
     if n_rf_filter == 3:
         rf2_sele = cdf.attrs['NDA_rf_filter_selected'][2]
-        rf2_hour = datetime.datetime.strptime(cdf.attrs['NDA_rf_filter_time_change'][2], "%Y-%m-%dT%H:%M:%SZ").hour
-        rf2_minu = datetime.datetime.strptime(cdf.attrs['NDA_rf_filter_time_change'][2], "%Y-%m-%dT%H:%M:%SZ").minute
+        rf2_dt = datetime.datetime.strptime(cdf.attrs['NDA_rf_filter_time_change'][1][0:19], "%Y-%m-%dT%H:%M:%S")
+        rf2_hour = rf2_dt.hour
+        rf2_minu = rf2_dt.minute
     else:
         rf2_sele = 0
         rf2_hour = 0
@@ -112,7 +119,7 @@ def edr_cdf_to_rt1(cdf_file, rt1_file='', verbose=False):
 
     # open RT1 file in write binary mode
     rt1 = open(rt1_file, 'wb')
-    
+
     # writing header, with trailing spaces
     rt1.write(header)
 
