@@ -670,8 +670,8 @@ def build_edr_cdf(input_file, config_file='config.json', build_cdf_master=False)
 
     # SETTING VARIABLES
     cdfout['Epoch'] = edr['time']
-    cdfout['FLUX_RR'] = edr['rr_flux']
-    cdfout['FLUX_LL'] = edr['ll_flux']
+    cdfout['RR'] = edr['rr_flux']
+    cdfout['LL'] = edr['ll_flux']
     cdfout['STATUS'] = edr['status']
     cdfout['SWEEP_TIME_OFFSET_RAMP'] = edr['sweep_time_offset_ramp']
     cdfout['RR_SWEEP_TIME_OFFSET'] = edr['rr_sweep_time_offset']
