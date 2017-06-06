@@ -1,3 +1,16 @@
+#!/usr/bin/env python
+
+"""SRN NDA Routine Jup EDR dataset building scripts"""
+
+__author__ = "Baptiste Cecconi"
+__copyright__ = "Copyright 2017, LESIA-PADC-USN, Observatoire de Paris"
+__credits__ = ["Baptiste Cecconi", "Andree Coffre", "Laurent Lamy"]
+__license__ = "GPLv3"
+__version__ = "1.4"
+__maintainer__ = "Baptiste Cecconi"
+__email__ = "baptiste.cecconi@obspm.fr"
+__status__ = "Production"
+
 import numpy as np
 import os
 import os.path

@@ -1,8 +1,8 @@
 {
   "version":{
-    "cdf": 13,
-    "sft": 12,
-    "dat": 10
+    "cdf": "13",
+    "sft": "12",
+    "dat": "10"
   },
   "path":{
     "master_path": "../master/",

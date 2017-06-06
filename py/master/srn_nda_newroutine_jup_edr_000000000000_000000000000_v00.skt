@@ -199,30 +199,14 @@
   "VESPA_bib_reference"
                        1:    CDF_CHAR     { "2000GMS...119..321L" } .
 
-! SRN-NDA Specific Global Attributes
+! SRN-NDA NewRoutine Specific Global Attributes
 ! ----------------------------------
 
-  "NDA_rf_filter_selected"
-                       1:    CDF_BYTE     { 0 } .
+  "NDA_newroutine_sel_prod"
+                       1:    CDF_INT4      { 0 } .
 
-  "NDA_rf_filter_time_change"
-                       1:    CDF_TIME_TT2000   { 01-Jan-0000 00:00:00.000 } .
-
-  "NDA_power_resolution"
-                       1:    CDF_REAL4    { 0.0 } .
-
-  "NDA_reference_level"
-                       1:    CDF_REAL4    { 0.0 } .
-
-  "NDA_meridian_time"
-                       1:    CDF_TIME_TT2000   { 01-Jan-0000 00:00:00.000 } .
-
-  "NDA_sweep_duration"
-                       1:    CDF_REAL4    { 0.0 } .
-
-  "NDA_header_version"
-                       1:    CDF_BYTE    { 0 } .
-
+  "NDA_newroutine_acc_fact"
+                       1:    CDF_INT4      { 0 } .
 
 #VARIABLEattributes
 
@@ -313,13 +297,13 @@
 ! Name              Type     Elements  Dims  Sizes  Variance  Variances
 ! --------          ----     --------  ----  -----  --------  ---------
 
-  "RR"        CDF_UINT1      1       1     400         T     T
+  "RR"        CDF_REAL4      1       1     615         T     T
 
   ! VAR_COMPRESSION: None
   ! (Valid compression: None, GZIP.1-9, RLE.0, HUFF.0, AHUFF.0)
   ! VAR_SPARSERECORDS: None
   ! (Valid sparserecords: None, sRecords.PAD, sRecords.PREV)
-  ! VAR_PADVALUE: 254
+  ! VAR_PADVALUE: -1.0E30
 
   ! Attribute       Data
   ! Name            Type       Value
@@ -330,17 +314,17 @@
     "DEPEND_1"    CDF_CHAR     { "Frequency" }
     "DICT_KEY"    CDF_CHAR     { "electric_field>power" }
     "DISPLAY_TYPE"
-                  CDF_CHAR     { "time_series" }
+                  CDF_CHAR     { "spectrogram" }
     "FIELDNAM"    CDF_CHAR     { "RR" }
-    "FILLVAL"     CDF_UINT1    { 255 }
+    "FILLVAL"     CDF_REAL4    { -1.0E31 }
     "LABLAXIS"    CDF_CHAR     { "RH flux density" }
-    "UNITS"       CDF_CHAR     { "dB" }
-    "VALIDMIN"    CDF_UINT1    { 0 }
-    "VALIDMAX"    CDF_UINT1    { 255 }
+    "UNITS"       CDF_CHAR     { "ADU" }
+    "VALIDMIN"    CDF_REAL4    { 1.0E10 }
+    "VALIDMAX"    CDF_REAL4    { 1.0E20 }
     "VAR_TYPE"    CDF_CHAR     { "data" }
-    "SCALETYP"    CDF_CHAR     { "lin" }
-    "SCALEMIN"    CDF_UINT1    { 0 }
-    "SCALEMAX"    CDF_UINT1    { 255 }
+    "SCALETYP"    CDF_CHAR     { "log" }
+    "SCALEMIN"    CDF_REAL4    { 1.0E10 }
+    "SCALEMAX"    CDF_REAL4    { 1.0E20 }
     "UCD"         CDF_CHAR     { "phys.flux.density;em.radio;phys.polarization.rr" } .
 
   ! RV values were not requested.
@@ -350,13 +334,13 @@
 ! Name              Type     Elements  Dims  Sizes  Variance  Variances
 ! --------          ----     --------  ----  -----  --------  ---------
 
-  "LL"       CDF_UINT1      1       1     400         T     T
+  "LL"       CDF_REAL4      1       1     615         T     T
 
   ! VAR_COMPRESSION: None
   ! (Valid compression: None, GZIP.1-9, RLE.0, HUFF.0, AHUFF.0)
   ! VAR_SPARSERECORDS: None
   ! (Valid sparserecords: None, sRecords.PAD, sRecords.PREV)
-  ! VAR_PADVALUE: 254
+  ! VAR_PADVALUE: -1.0E30
 
   ! Attribute       Data
   ! Name            Type       Value
@@ -369,15 +353,15 @@
     "DISPLAY_TYPE"
                   CDF_CHAR     { "time_series" }
     "FIELDNAM"    CDF_CHAR     { "LL" }
-    "FILLVAL"     CDF_UINT1    { 255 }
+    "FILLVAL"     CDF_REAL4    { -1.0E31 }
     "LABLAXIS"    CDF_CHAR     { "LH flux density" }
-    "UNITS"       CDF_CHAR     { "dB" }
-    "VALIDMIN"    CDF_UINT1    { 0 }
-    "VALIDMAX"    CDF_UINT1    { 255 }
+    "UNITS"       CDF_CHAR     { "ADU" }
+    "VALIDMIN"    CDF_REAL4    { 1.0E10 }
+    "VALIDMAX"    CDF_REAL4    { 1.0E20 }
     "VAR_TYPE"    CDF_CHAR     { "data" }
-    "SCALETYP"    CDF_CHAR     { "lin" }
-    "SCALEMIN"    CDF_UINT1    { 0 }
-    "SCALEMAX"    CDF_UINT1    { 255 }
+    "SCALETYP"    CDF_CHAR     { "log" }
+    "SCALEMIN"    CDF_REAL4    { 1.0E10 }
+    "SCALEMAX"    CDF_REAL4    { 1.0E20 }
     "UCD"         CDF_CHAR     { "phys.flux.density;em.radio;phys.polarization.ll" } .
 
   ! RV values were not requested.
@@ -386,73 +370,35 @@
 ! Name              Type     Elements  Dims  Sizes  Variance  Variances
 ! --------          ----     --------  ----  -----  --------  ---------
 
-  "STATUS"       CDF_BYTE   	1       1       2     	T       T
+  "RL"       CDF_REAL4      1       1     615         T     T
 
   ! VAR_COMPRESSION: None
   ! (Valid compression: None, GZIP.1-9, RLE.0, HUFF.0, AHUFF.0)
   ! VAR_SPARSERECORDS: None
   ! (Valid sparserecords: None, sRecords.PAD, sRecords.PREV)
-  ! VAR_PADVALUE: -127
+  ! VAR_PADVALUE: -1.0E30
 
   ! Attribute       Data
   ! Name            Type       Value
   ! --------        ----       -----
 
-    "CATDESC"     CDF_CHAR     { "Sweep Status code" }
+    "CATDESC"     CDF_CHAR     { "Real part of cross-correlation between the RH and LH arrays." }
     "DEPEND_0"    CDF_CHAR     { "Epoch" }
-    "DICT_KEY"    CDF_CHAR     { "STATUS" }
-    "DISPLAY_TYPE"
-                  CDF_CHAR     { "time_series" }
-    "FIELDNAM"    CDF_CHAR     { "STATUS" }
-    "FILLVAL"     CDF_BYTE    { -128 }
-    "FORMAT"      CDF_CHAR     { "I4" }
-    "LABLAXIS"    CDF_CHAR     { "Status Code" }
-    "UNITS"       CDF_CHAR     { "-" }
-    "VALIDMIN"    CDF_BYTE    { 0 }
-    "VALIDMAX"    CDF_BYTE    { 99 }
-    "VAR_TYPE"    CDF_CHAR     { "support_data" }
-    "SCALETYP"    CDF_CHAR     { "linear" }
-    "SCALEMIN"    CDF_BYTE    { 0 }
-    "SCALEMAX"    CDF_BYTE    { 99 }
-    "UCD"         CDF_CHAR     { "meta.code" } .
-
-  ! RV values were not requested.
-
-! Variable          Data      Number                 Record   Dimension
-! Name              Type     Elements  Dims  Sizes  Variance  Variances
-! --------          ----     --------  ----  -----  --------  ---------
-
-  "SWEEP_TIME_OFFSET_RAMP"  CDF_REAL4      1       1     400         F     T
-
-  ! VAR_COMPRESSION: None
-  ! (Valid compression: None, GZIP.1-9, RLE.0, HUFF.0, AHUFF.0)
-  ! VAR_SPARSERECORDS: None
-  ! (Valid sparserecords: None, sRecords.PAD, sRecords.PREV)
-  ! VAR_PADVALUE:  -1.0E30
-
-  ! Attribute       Data
-  ! Name            Type       Value
-  ! --------        ----       -----
-
-    "CATDESC"     CDF_CHAR     { "Time Offset to be added to the sweep start " -
-                                "time to recover the actual time of measurement " -
-                                "of each sweep sample." }
     "DEPEND_1"    CDF_CHAR     { "Frequency" }
-    "DICT_KEY"    CDF_CHAR     { "time>relative" }
+    "DICT_KEY"    CDF_CHAR     { "electric_field>power" }
     "DISPLAY_TYPE"
-                  CDF_CHAR     { "time_series" }
-    "FIELDNAM"    CDF_CHAR     { "SWEEP_TIME_OFFSET_RAMP" }
+                  CDF_CHAR     { "spectrogram" }
+    "FIELDNAM"    CDF_CHAR     { "RL" }
     "FILLVAL"     CDF_REAL4    { -1.0E31 }
-    "FORMAT"      CDF_CHAR     { "E12.2" }
-    "LABLAXIS"    CDF_CHAR     { "Sweep time offset" }
-    "UNITS"       CDF_CHAR     { "s" }
-    "VALIDMIN"    CDF_REAL4    { 0. }
-    "VALIDMAX"    CDF_REAL4    { 1. }
-    "VAR_TYPE"    CDF_CHAR     { "support_data" }
+    "LABLAXIS"    CDF_CHAR     { "RL" }
+    "UNITS"       CDF_CHAR     { "ADU" }
+    "VALIDMIN"    CDF_REAL4    { -1.0E20 }
+    "VALIDMAX"    CDF_REAL4    { 1.0E20 }
+    "VAR_TYPE"    CDF_CHAR     { "data" }
     "SCALETYP"    CDF_CHAR     { "lin" }
-    "SCALEMIN"    CDF_REAL4    { 0. }
-    "SCALEMAX"    CDF_REAL4    { 1. }
-    "UCD"         CDF_CHAR     { "time.interval" } .
+    "SCALEMIN"    CDF_REAL4    { -1.0E20 }
+    "SCALEMAX"    CDF_REAL4    { 1.0E20 }
+    "UCD"         CDF_CHAR     { "phys.flux.density;em.radio" } .
 
   ! RV values were not requested.
 
@@ -461,37 +407,35 @@
 ! Name              Type     Elements  Dims  Sizes  Variance  Variances
 ! --------          ----     --------  ----  -----  --------  ---------
 
-  "RR_SWEEP_TIME_OFFSET"  CDF_REAL4      1      0       T
+  "LR"       CDF_REAL4      1       1     615         T     T
 
   ! VAR_COMPRESSION: None
   ! (Valid compression: None, GZIP.1-9, RLE.0, HUFF.0, AHUFF.0)
   ! VAR_SPARSERECORDS: None
   ! (Valid sparserecords: None, sRecords.PAD, sRecords.PREV)
-  ! VAR_PADVALUE:  -1.0E30
+  ! VAR_PADVALUE: -1.0E30
 
   ! Attribute       Data
   ! Name            Type       Value
   ! --------        ----       -----
 
-    "CATDESC"     CDF_CHAR     { "Time Offset to be added to the Epoch " -
-                                "time to recover the actual start time " -
-                                "of the RH sweep." }
+    "CATDESC"     CDF_CHAR     { "Imaginary part of cross-correlation between the RH and LH arrays." }
     "DEPEND_0"    CDF_CHAR     { "Epoch" }
-    "DICT_KEY"    CDF_CHAR     { "time>relative" }
+    "DEPEND_1"    CDF_CHAR     { "Frequency" }
+    "DICT_KEY"    CDF_CHAR     { "electric_field>power" }
     "DISPLAY_TYPE"
-                  CDF_CHAR     { "time_series" }
-    "FIELDNAM"    CDF_CHAR     { "RR_SWEEP_TIME_OFFSET" }
+                  CDF_CHAR     { "spectrogram" }
+    "FIELDNAM"    CDF_CHAR     { "LR" }
     "FILLVAL"     CDF_REAL4    { -1.0E31 }
-    "FORMAT"      CDF_CHAR     { "E12.2" }
-    "LABLAXIS"    CDF_CHAR     { "RR sweep start time offset" }
-    "UNITS"       CDF_CHAR     { "s" }
-    "VALIDMIN"    CDF_REAL4    { 0. }
-    "VALIDMAX"    CDF_REAL4    { 1. }
-    "VAR_TYPE"    CDF_CHAR     { "support_data" }
+    "LABLAXIS"    CDF_CHAR     { "LR" }
+    "UNITS"       CDF_CHAR     { "ADU" }
+    "VALIDMIN"    CDF_REAL4    { -1.0E20 }
+    "VALIDMAX"    CDF_REAL4    { 1.0E20 }
+    "VAR_TYPE"    CDF_CHAR     { "data" }
     "SCALETYP"    CDF_CHAR     { "lin" }
-    "SCALEMIN"    CDF_REAL4    { 0. }
-    "SCALEMAX"    CDF_REAL4    { 1. }
-    "UCD"         CDF_CHAR     { "time.interval" } .
+    "SCALEMIN"    CDF_REAL4    { -1.0E20 }
+    "SCALEMAX"    CDF_REAL4    { 1.0E20 }
+    "UCD"         CDF_CHAR     { "phys.flux.density;em.radio" } .
 
   ! RV values were not requested.
 
@@ -500,7 +444,7 @@
 ! Name              Type     Elements  Dims  Sizes  Variance  Variances
 ! --------          ----     --------  ----  -----  --------  ---------
 
-  "Frequency"     CDF_REAL4      1       1     400        F         T
+  "Frequency"     CDF_REAL4      1       1     615        F         T
 
   ! VAR_COMPRESSION: None
   ! (Valid compression: None, GZIP.1-9, RLE.0, HUFF.0, AHUFF.0)
