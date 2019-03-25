@@ -363,9 +363,9 @@ def load_rt1_data(file_rt1):
         else:
             raw_header['merid_yr'] = '19'+raw_header['merid_yr']
         if int(raw_header['start_yr']) < 90:
-            raw_header['start_yr'] = '20'+raw_header['merid_yr']
+            raw_header['start_yr'] = '20'+raw_header['start_yr']
         else:
-            raw_header['start_yr'] = '19'+raw_header['merid_yr']
+            raw_header['start_yr'] = '19'+raw_header['start_yr']
 
     # Adding meridian transit date when not present
     else:
